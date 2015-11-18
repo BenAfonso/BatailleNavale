@@ -10,14 +10,14 @@ class Grille:
 
 	def coordonneValide(self,Position):
 		# Return true si la position appartient à la grille
-		return (Position.getX() <= self.largeur and Position.getY() <= self.hauteur)
+		return (Position.getX() <= self.largeur and Position.getX() >= 0 and Position.getY() <= self.hauteur and Position.getY() >= 0)
 
 	def marquerPosition(self,Position):
 		# (1) La position n'est pas occupée par un bateau
-		if not(self.aUnBateau(Position)):
+		if not(self.aUnBateau(Position)) and self.coordonneValide(Position):
 			self.positionsOcuppees.append(Position) 
 		else:
-			print "Case deja occupee"
+			raise Exception 
 
 
 	def aUnBateau(self,Position):
@@ -28,9 +28,13 @@ class Grille:
 				res = True
 		return res
 
-	def estIntacte(self,Position):
+	def estIntacte(self,Position): 
 		# Return True si la case a un bateau et n'a pas déjà été tiré
-		return (self.aUnBateau(Position) and not(Position.get_Tire()))  
+		res = False
+		for PositionCur in self.positionsOcuppees:
+			if (Position.getX() == PositionCur.getX() and Position.getY() == PositionCur.getY() and not(PositionCur.get_Tire())):
+				res = True
+		return res 
 
 	def quelBateau(self,Position):
 		# Si Position.aUnBateau()
@@ -43,6 +47,8 @@ class Grille:
 		for PositionCur in self.positionsOcuppees:
 			if (Position.getX() == PositionCur.getX() and Position.getY() == PositionCur.getY()):
 				PositionCur.set_Tire()
+
+			
 
 	def bateauEnVue(self,Position):
 		res = False

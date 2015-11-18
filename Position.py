@@ -16,6 +16,7 @@ class Position:
 		return self.Tire
 	def set_Tire(self):
 		self.Tire=True
+
 	def getBateau(self):
 		return self.Bateau
 		
@@ -31,6 +32,11 @@ class Position:
 
 	def est_AdjacenteY(self,Position):
 		return (Position.getY() == self.getY()+1 or Position.getY() == self.getY()-1)
+
+
+
+
+
 
 
 

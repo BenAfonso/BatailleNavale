@@ -3,12 +3,8 @@ class Partie:
 	def __init__(self):
 		self.joueur1 = Joueur()
 		self.joueur2 = Joueur()
-
-		# un peu d'la merde lol
 		self.premierJoueur = self.joueur1
-		self.JoueurSuivant = self.joueur2
-
-
+		self.deuxiemeJoueur = self.joueur2
 		self.joueurActif = self.joueur1
 		self.tour=0
 		# Accesseurs vers les grilles des joueurs:
@@ -29,16 +25,20 @@ class Partie:
 		self.tour = self.tour + 1
 		if (self.tour % 2 == 0):
 			self.joueurActif = self.premierJoueur
+			self.nextJoueur = self.deuxiemeJoueur
 		else:
-			self.joueurActif = self.JoueurSuivant
+			self.joueurActif = self.deuxiemeJoueur
+			self.nextJoueur = self.premierJoueur
+
 
 		
 
 	def get_JoueurActif(self):
 		return self.joueurActif
 
-	def get_JoueurSuivant(self):
-		return self.JoueurSuivant
+	def get_nextJoueur(self):
+		return self.nextJoueur
+
 
 
 

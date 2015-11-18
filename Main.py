@@ -13,7 +13,9 @@ def cls():
 
 def header():
 	cls()
-	print "=============== BATAILLE NAVALE ===============\n"
+	print "================================================================================\n"
+	print "==                BEST BATAILLE NAVALE Online v49.8.1 Build 8.1               ==\n"
+	print "================================================================================\n"
 
 def demandeNoms():
 	header()
@@ -38,9 +40,12 @@ def placerBateaux(i=0):
 		print("Entrez une coordonnee: ")
 		X = int(raw_input("X: "))
 		Y = int(raw_input("Y: "))
-		LastPos=Position(X,Y)
-		Partie.get_JoueurActif().get_Grille().marquerPosition(LastPos)
-		print "Bravo bon choix !"
+		LastPos=Position(X,Y,Partie.get_JoueurActif().get_Bateaux().get_Bateau(i))
+		try:
+			Partie.get_JoueurActif().get_Grille().marquerPosition(LastPos)
+		except:
+			raw_input("Case occuppée et/ou hors grille !")
+			placerBateaux(i)
 		k=1
 		while(k < Partie.get_JoueurActif().get_Bateaux().get_Bateau(i).get_taille()):
 			header()
@@ -50,7 +55,7 @@ def placerBateaux(i=0):
 			print("Entrez une coordonnee: ")
 			X = int(raw_input("X: "))
 			Y = int(raw_input("Y: "))
-			pos=Position(X,Y)
+			pos=Position(X,Y,Partie.get_JoueurActif().get_Bateaux().get_Bateau(i))
 			if (pos.est_AdjacenteY(LastPos) or pos.est_AdjacenteX(LastPos)):
 				try:
 					Partie.get_JoueurActif().get_Grille().marquerPosition(pos)
@@ -58,16 +63,31 @@ def placerBateaux(i=0):
 					k = k+1
 					LastPos = pos
 				except:
-					print("Oops !")
+					raw_input("Case occuppée et/ou hors grille !")
 			else:
-				print "Mauvaise case, non adjacente."
+				raw_input("Mauvaise case, non adjacente.")
 		Partie.get_JoueurActif().get_Bateaux().get_Bateau(i).set_estPlace()
 		i=i+1
 
 
+def demandeTir():
+	header()
+	print Partie.get_JoueurActif().get_NomJoueur()+" >> TIR : "
+	X = int(raw_input("X: "))
+	Y = int(raw_input("Y: "))
+	PosTir = Position(X,Y)
+	Resultat(PosTir,Partie.get_nextJoueur().get_Grille())
+	raw_input("Joueur suivant")
 
-
-
+def afficherGagnant():
+	header()
+	print "===================================\n"
+	print "==         FIN DE PARTIE         ==\n"
+	print "===================================\n"
+	print "+GAGNANT: "+Partie.get_nextJoueur().get_NomJoueur()+"\n\n"
+	print "-Dommage "+Partie.get_JoueurActif().get_NomJoueur()+", vous avez perdu !\n\n"
+	print "===> Merci d'avoir joué ! ;)\n"
+	raw_input("'Entrée' pour quitter.")
 try:
 	Partie = Partie()
 	print "Création d'une partie à 2 joueurs"
@@ -76,25 +96,22 @@ except:
 demandeNoms()
 # Joueur 1 Actif : Placement des bateaux
 placerBateaux()
+raw_input("Joueur suivant")
 Partie.joueurSuivant()
 # Joueur 2 Actif : Placement des bateaux 
 placerBateaux()
+raw_input("Joueur suivant")
 Partie.joueurSuivant()
 
 # Tous les bateaux sont placés !
 
-# Tirs
-i=0 
-while (i<10):
-	i=i+1
-	header()
-	print Partie.get_JoueurActif().get_NomJoueur()+" >> TIR : "
-	X = int(raw_input("X: "))
-	Y = int(raw_input("Y: "))
-	PosTir = Position(X,Y)
-	Resultat(PosTir,Partie.get_JoueurSuivant().get_Grille())
-	raw_input("Nouveau Tir")
+# Tirs 
 
+# TO BE CONTINUED
+while (not(Partie.get_JoueurActif().a_perdu())):
+	demandeTir()
+	Partie.joueurSuivant()
+afficherGagnant()
 
 
 

@@ -6,7 +6,9 @@ class Resultat:
 		self.resultat()
 
 	def resultat(self):
-		if (self.GrilleAdverse.aUnBateau(self.Position)):
+		if (self.GrilleAdverse.estIntacte(self.Position)):
+			
+			self.GrilleAdverse.enleverPosition(self.Position)	
 			BateauTouche=self.GrilleAdverse.quelBateau(self.Position)
 			if (BateauTouche.get_nbCasesIntactes() > 1):
 				print(self.creerTouche())
@@ -19,18 +21,18 @@ class Resultat:
 
 
 	def creerLoupe(self):
-		return "Loupé !"
+		return "\n\nLoupé !\n"
 
 	def creerCoule(self):
 		Bateau = self.GrilleAdverse.quelBateau(self.Position)
-		Bateau.set_taille(Bateau.get_nbCasesIntactes()-1) # On enlève une case du tableau		
-		return "Coulé !"
+		Bateau.caseTouche()	# On enlève une case du tableau	
+		return "\n\nCoulé !\n"
 
 	def creerEnVue(self):
 		
-		return "En Vue !"
+		return "\n\nEn Vue !\n"
 
 	def creerTouche(self):
 		Bateau = self.GrilleAdverse.quelBateau(self.Position)
-		Bateau.set_taille(Bateau.get_nbCasesIntactes()-1) # On enlève une case du tableau
-		return "Touche !"
+		Bateau.caseTouche() # On enlève une case du tableau
+		return "\n\nTouche !\n"

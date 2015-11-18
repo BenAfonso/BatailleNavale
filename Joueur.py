@@ -18,9 +18,9 @@ class Joueur:
 	def initBateaux(self):
 		self.Bateaux.add_Bateau(Bateau(1))
 		self.Bateaux.add_Bateau(Bateau(2))
-		self.Bateaux.add_Bateau(Bateau(3))
-		self.Bateaux.add_Bateau(Bateau(4))
-		self.Bateaux.add_Bateau(Bateau(5))
+		#self.Bateaux.add_Bateau(Bateau(3))
+		#self.Bateaux.add_Bateau(Bateau(4))
+		#self.Bateaux.add_Bateau(Bateau(5))
 
 	def get_NomJoueur(self):
 		return self.NomJoueur
@@ -33,6 +33,9 @@ class Joueur:
 
 	def get_Grille(self):
 		return self.Grille
+
+	def a_perdu(self):
+		return self.Bateaux.get_NombreBateauxCoules() == self.Bateaux.get_NombreBateauxPlaces()
 
 
 

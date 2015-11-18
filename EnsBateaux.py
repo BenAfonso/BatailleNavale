@@ -27,6 +27,13 @@ class EnsBateaux:
 			if Bateau.estPlace:
 				cpt = cpt+1
 		return cpt
+
+	def get_NombreBateauxCoules(self):
+		cpt=0
+		for Bateau in self.tableauBateau:
+			if Bateau.estCoule():
+				cpt = cpt+1
+		return cpt
 		
 	def get_NombreBateauxNonPlaces(self):
 		cpt=0
