@@ -1,7 +1,3 @@
-# BatailleNavale
-TP 01 - Algo - Python
-# GestionDevis
-
 Bataille Navale<br>
 -----------------------------------------
 <i>Python 2.7<i><br>
