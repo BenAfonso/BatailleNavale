@@ -27,3 +27,5 @@ class Bateau:
 	def estCoule(self):
 		return (self.nbCasesIntactes == 0)
 
+
+

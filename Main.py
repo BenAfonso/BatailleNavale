@@ -32,7 +32,10 @@ def demandeNoms():
 
 def placerBateaux(i=0):
 	# i = BateauCourant
+	
+
 	while (Partie.get_JoueurActif().get_Bateaux().get_NombreBateauxNonPlaces() > 0):
+
 		header()
 		print "===> Placer vos bateaux <====\n"
 		print Partie.get_JoueurActif().get_NomJoueur()+" >> "+str(Partie.get_JoueurActif().get_Bateaux().get_NombreBateauxNonPlaces())+ " bateaux à placer."
@@ -43,31 +46,35 @@ def placerBateaux(i=0):
 		LastPos=Position(X,Y,Partie.get_JoueurActif().get_Bateaux().get_Bateau(i))
 		try:
 			Partie.get_JoueurActif().get_Grille().marquerPosition(LastPos)
+			k=1
+			while(k < Partie.get_JoueurActif().get_Bateaux().get_Bateau(i).get_taille()):
+			
+				header()
+				print "===> Placer vos bateaux <====\n"
+				print Partie.get_JoueurActif().get_NomJoueur()+" >> "+str(Partie.get_JoueurActif().get_Bateaux().get_NombreBateauxNonPlaces())+ " bateaux à placer."
+				print "Bateau selectionné: \nTaille:"+str(Partie.get_JoueurActif().get_Bateaux().get_Bateau(i).get_taille())+"\n"
+				print("Entrez une coordonnee: ")
+				X = int(raw_input("X: "))
+				Y = int(raw_input("Y: "))
+				pos=Position(X,Y,Partie.get_JoueurActif().get_Bateaux().get_Bateau(i))
+				if (pos.est_AdjacenteY(LastPos) or pos.est_AdjacenteX(LastPos)):
+					try:
+						Partie.get_JoueurActif().get_Grille().marquerPosition(pos)
+						k = k+1
+
+						LastPos = pos
+					except:
+						raw_input("Case occuppée et/ou hors grille !")
+				else:
+					raw_input("Mauvaise case, non adjacente.")
+			# k == taille(Bateau)
+			Partie.get_JoueurActif().get_Bateaux().get_Bateau(i).set_estPlace()
+			i=i+1
+			raw_input("Bateau place, Bateau suivant")
 		except:
 			raw_input("Case occuppée et/ou hors grille !")
 			placerBateaux(i)
-		k=1
-		while(k < Partie.get_JoueurActif().get_Bateaux().get_Bateau(i).get_taille()):
-			header()
-			print "===> Placer vos bateaux <====\n"
-			print Partie.get_JoueurActif().get_NomJoueur()+" >> "+str(Partie.get_JoueurActif().get_Bateaux().get_NombreBateauxNonPlaces())+ " bateaux à placer."
-			print "Bateau selectionné: \nTaille:"+str(Partie.get_JoueurActif().get_Bateaux().get_Bateau(i).get_taille())+"\n"
-			print("Entrez une coordonnee: ")
-			X = int(raw_input("X: "))
-			Y = int(raw_input("Y: "))
-			pos=Position(X,Y,Partie.get_JoueurActif().get_Bateaux().get_Bateau(i))
-			if (pos.est_AdjacenteY(LastPos) or pos.est_AdjacenteX(LastPos)):
-				try:
-					Partie.get_JoueurActif().get_Grille().marquerPosition(pos)
-					print "Bravo belle case !"
-					k = k+1
-					LastPos = pos
-				except:
-					raw_input("Case occuppée et/ou hors grille !")
-			else:
-				raw_input("Mauvaise case, non adjacente.")
-		Partie.get_JoueurActif().get_Bateaux().get_Bateau(i).set_estPlace()
-		i=i+1
+		
 
 
 def demandeTir():
