@@ -105,7 +105,51 @@ Joueur
 - get_BateauxNonCoules(self) :: Joueur -> Int
 - get_Grille(self) :: Joueur -> Grille
 
+Partie
+-------------
+<b>Object</b><br>
+<h4>Structure de données:</h4>
+- joueur1 : Joueur
+- joueur2 : Joueur
+- premierJoueur : Joueur
+- deuxiemeJoueur : Joueur
+- joueurActif : Joueur
+- tour : INTEGER
 
-# TO BE CONTINUED
+
+<br>
+<h4>Fonctions:</h4>
+<br><b>+</b> Getters<br>
+- get_joueur1(self)  ::  Joueur -> Joueur
+- get_joueur2(self)  ::  Joueur -> Joueur
+- get_JoueurActif  ::  Joueur -> Joueur
+- get_nextJoueur   :: Joueur -> Joueur
+
+<br><b>+</b> Setters<br>
+- set_PremierJoueur(self)  ::  Joueur x Joueur -> Joueur
 
 
+<b>+</b>Définir le joueur jouant lors du tour n<br>
+- joueurSuivant   :: Joueur x tour -> Joueur
+
+Resultat
+-------------
+<b>Object</b><br>
+<h4>Structure de données:</h4>
+- Position : Position
+- GrilleAdverse : GrilleAdverse
+- resultat : Resultat
+
+
+<br>
+<h4>Fonctions:</h4>
+<b>+</b>Gére le message de resultat de tir à afficher à l'utilisateur<br>
+- resultat   :: Resultat -> Fonctions
+<b>+</b>Affiche le message Loupé<br>
+- creerLoupe  :: Resultat -> String
+<b>+</b>Affiche le message touché<br>
+- creerTouche  :: Resultat -> String
+<b>+</b>Affiche le message coulé<br>
+- creerCoule  :: Resultat -> String
+<b>+</b>Affiche le message en Vue<br>
+- creerEnVue  :: Resultat -> String
