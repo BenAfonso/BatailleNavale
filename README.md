@@ -143,13 +143,14 @@ Resultat
 
 <br>
 <h4>Fonctions:</h4>
-<b>+</b>Gére le message de resultat de tir à afficher à l'utilisateur<br>
+
 - resultat   :: Resultat -> Fonctions
-<b>+</b>Affiche le message Loupé<br>
+<b>+</b>Gére le message de resultat de tir à afficher à l'utilisateur<br>
 - creerLoupe  :: Resultat -> String
-<b>+</b>Affiche le message touché<br>
+<b>+</b>Affiche le message Loupé<br>
 - creerTouche  :: Resultat -> String
-<b>+</b>Affiche le message coulé<br>
+<b>+</b>Affiche le message touché<br>
 - creerCoule  :: Resultat -> String
-<b>+</b>Affiche le message en Vue<br>
+<b>+</b>Affiche le message coulé<br>
 - creerEnVue  :: Resultat -> String
+<b>+</b>Affiche le message en Vue<br>
