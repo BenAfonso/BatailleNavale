@@ -14,7 +14,8 @@ Programme de Bataille Navale développé en Python.
 - estPlace : BOOLEAN
 - nbCasesIntactes : INTEGER
 #### Fonctions
- ** Getters **
+
+>  **Getters**
 - get_taille  ::  Bateau -> Int
 - get_estPlace  ::  Bateau -> BOOLEAN
 - get_nbCasesIntactes  ::  Bateau -> Int
@@ -38,7 +39,8 @@ Retire une case intacte du bateau
 #### Structure de données
 - tableauBateau : List
 #### Fonctions
- **Getters**
+
+>  **Getters**
 - get_Bateau  ::  EnsBateaux x Int-> Bateau
 Renvoie le n-ieme bateau (A partir de 0)
 - get_Premier_Bateau  ::  Bateau -> Bateau
@@ -64,7 +66,8 @@ Retire un bateau de l'ensemble
 - largeur : Int
 - positionsOccuppees : List
 #### Fonctions
-  **Getters**
+
+>  **Getters**
 - coordonneeValide :: Grille x Position -> Boolean
 - marquerPosition :: Grille x Position -> Grille
 Ajoute la position à l'ensemble des positions occupées
@@ -100,7 +103,8 @@ Enleve une position des position occupées de la grille
 - NomJoueur : String
 - Bateaux : EnsBateaux
 #### Fonctions
-  **Getters**
+
+>  **Getters**
 - get_Bateaux  ::  Joueur -> EnsBateaux
 - get_NomJoueur :: Joueur -> String
 - get_BateauxNonPlaces :: Joueur -> Int
@@ -129,8 +133,10 @@ Renvoie True si le joueur a perdu
 - deuxiemeJoueur : Joueur
 - joueurActif : Joueur
 - tour : INTEGER
-#### Fonctions
- **Getters**
+>
+ #### Fonctions
+
+>  **Getters**
 - get_joueur1  ::  Joueur -> Joueur
 - get_joueur2  ::  Joueur -> Joueur
 - get_JoueurActif  ::  Joueur -> Joueur
