@@ -20,7 +20,7 @@ Programme de Bataille Navale développé en Python.
 - get_estPlace  ::  Bateau -> BOOLEAN
 - get_nbCasesIntactes  ::  Bateau -> Int
 >
- ** Setters **
+ **Setters**
 - set_taille  ::  Bateau x Int -> Bateau
 - set_estPlace  ::  Bateau -> Bateau
 
