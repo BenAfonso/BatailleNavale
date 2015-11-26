@@ -28,8 +28,8 @@ Programme de Bataille Navale développé en Python.
 - caseTouche ::  Bateau -> Bateau
 Retire une case intacte du bateau
 - estCoule :: Bateau -> BOOLEAN
-
->    ***Précondition:***
+>
+  ***Précondition:***
 
 >       (1) estCoule <=> nbCasesIntactes == 0 et estPlace
 
