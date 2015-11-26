@@ -15,17 +15,19 @@ Bateau
 <br>
 <h4>Fonctions:</h4>
 <br><b>+</b> Getters<br>
-- get_taille(self)  ::  Bateau -> Int
-- get_estPlace(self)  ::  Bateau -> BOOLEAN
-- get_nbCasesIntactes(self)  ::  Bateau -> Int
+- get_taille  ::  Bateau -> Int
+- get_estPlace  ::  Bateau -> BOOLEAN
+- get_nbCasesIntactes  ::  Bateau -> Int
 <br><b>+</b> Setters<br>
-- set_taille(self)  ::  Bateau x Int -> Bateau
-- set_estPlace(self)  ::  Bateau -> Bateau
+- set_taille  ::  Bateau x Int -> Bateau
+- set_estPlace  ::  Bateau -> Bateau
 
 <b>+</b>Enlever une case intacte au bateau<br>
-- caseTouche(self) ::  Bateau -> Bateau
+- caseTouche ::  Bateau -> Bateau
+Retire une case intacte du bateau
 
-- estCoule(self) :: Bateau -> BOOLEAN
+- estCoule :: Bateau -> BOOLEAN
+(1) estCoule <=> nbCasesIntactes == 0 et estPlace
 
 
 EnsBateaux
@@ -37,23 +39,23 @@ EnsBateaux
 <br>
 <h4>Fonctions:</h4>
 <br><b>+</b> Getters<br>
-- get_Bateau(self,n)  ::  EnsBateaux x Int-> Bateau
+- get_Bateau  ::  EnsBateaux x Int-> Bateau
 Renvoie le n-ieme bateau (A partir de 0)
-- get_Premier_Bateau(self)  ::  Bateau -> Bateau
+- get_Premier_Bateau  ::  Bateau -> Bateau
 Renvoie le bateau numero 0
-- get_NombreBateauxPlaces(self)  ::  EnsBateaux -> Int
+- get_NombreBateauxPlaces  ::  EnsBateaux -> Int
 Renvoie le nombre de bateaux placés
-- get_NombreBateauxNonPlaces(self)  ::  EnsBateaux -> Int
+- get_NombreBateauxNonPlaces  ::  EnsBateaux -> Int
 Renvoie le nombre de bateaux non placés
-- get_NombreBateauxCoules(self)  ::  EnsBateaux -> Int
+- get_NombreBateauxCoules  ::  EnsBateaux -> Int
 Renvoie le nombre de bateaux coulés
 
 
 
 <b>+</b>Ajouter/Supprimer un bateau<br>
-- addBateau(self,Bateau) :: EnsBateaux x Bateau -> EnsBateaux
+- addBateau :: EnsBateaux x Bateau -> EnsBateaux
 Ajoute un bateau à l'ensemble
-- retirerBateau(self,Bateau) :: EnsBateaux x Bateau -> EnsBateaux
+- retirerBateau :: EnsBateaux x Bateau -> EnsBateaux
 Retire un bateau de l'ensemble
 
 Grille
@@ -67,19 +69,25 @@ Grille
 <br>
 <h4>Fonctions:</h4>
 <br><b>+</b> Getters<br>
-- coordonneeValide(self,Position) :: Grille x Position -> Boolean
-- marquerPosition(self,Position) :: Grille x Position -> Grille
+- coordonneeValide :: Grille x Position -> Boolean
+- marquerPosition :: Grille x Position -> Grille
+(1) marquerPosition <=> coordonneeValide
+(2) marquerPosition <=> non(aUnBateau)
 Ajoute la position à l'ensemble des positions occupées
-- aUnBateau(self,Position) :: Grille x Position -> Boolean
+- aUnBateau :: Grille x Position -> Boolean
+(3) aUnBateau => coordonneeValide
 Renvoie True si la position est occupée par un bateau
-- estIntacte(self,Position) :: Grille x Position -> Boolean
+- estIntacte :: Grille x Position -> Boolean
+(4) estIntacte <=> aUnBateau
 Renvoie True si la position est occupée par un bateau et n'a pas été touchée
-- quelBateau(self,Position) :: Grille x Position -> Bateau
+- quelBateau :: Grille x Position -> Bateau
+(5) aUnBateau <=> quelBateau
 Renvoie le bateau qui occupe la position précisé
-- enleverPosition(self,Position) :: Grille x Position -> Grille
+- enleverPosition :: Grille x Position -> Grille
+(6) enleverPosition <=> aUnBateau
 Enleve une position des position occupées de la grille
-- bateauEnVue(self,Position) :: Grille x Position -> Boolean
-Renvoie True si une case de bateau est sur la même ligne/colonne
+- bateauEnVue :: Grille x Position -> Boolean
+(7) Renvoie True si une case de bateau est sur la même ligne/colonne
 
 
 
@@ -89,7 +97,7 @@ Joueur
 <h4>Structure de données:</h4>
 - grille : Grille
 - BateauxNonPlaces : Int
-- BataeuxPlaces : Int
+- BateauxPlaces : Int
 - BateauxNonCoules : Int
 - NomJoueur : String
 - Bateaux : EnsBateaux
@@ -98,12 +106,26 @@ Joueur
 <br>
 <h4>Fonctions:</h4>
 <br><b>+</b> Getters<br>
-- get_Bateaux(self)  ::  Joueur -> EnsBateaux
-- get_NomJoueur(self) :: Joueur -> String
-- get_BateauxNonPlaces(self) :: Joueur -> Int
-- get_BateauxPlaces(self) :: Joueur -> Int
-- get_BateauxNonCoules(self) :: Joueur -> Int
-- get_Grille(self) :: Joueur -> Grille
+- get_Bateaux  ::  Joueur -> EnsBateaux
+- get_NomJoueur :: Joueur -> String
+- get_BateauxNonPlaces :: Joueur -> Int
+Renvoie le nombre de bateaux non places
+- get_BateauxPlaces :: Joueur -> Int
+Renvoie le nombre de bateaux places
+- get_BateauxNonCoules :: Joueur -> Int
+Renvoie le nombre de bateaux non coulés
+- get_Grille :: Joueur -> Grille
+
+<br><b>+</b> Setters<br>
+- set_NomJoueur  ::  Joueur x String -> Joueur
+ 
+
+- initBateaux :: Joueur -> EnsBateaux
+Initialise un set de 5 Bateaux pour le joueur
+
+- a_perdu :: Joueur -> Boolean
+Renvoie True si le joueur a perdu
+
 
 Partie
 -------------
@@ -120,17 +142,17 @@ Partie
 <br>
 <h4>Fonctions:</h4>
 <br><b>+</b> Getters<br>
-- get_joueur1(self)  ::  Joueur -> Joueur
-- get_joueur2(self)  ::  Joueur -> Joueur
+- get_joueur1  ::  Joueur -> Joueur
+- get_joueur2  ::  Joueur -> Joueur
 - get_JoueurActif  ::  Joueur -> Joueur
 - get_nextJoueur   :: Joueur -> Joueur
 
 <br><b>+</b> Setters<br>
-- set_PremierJoueur(self)  ::  Joueur x Joueur -> Joueur
-
+- set_PremierJoueur  ::  Joueur x Joueur -> Joueur
 
 <b>+</b>Définir le joueur jouant lors du tour n<br>
 - joueurSuivant   :: Joueur x tour -> Joueur
+Renvoie le joueur suivant en fonction du numero du tour et du premier joueur
 
 Resultat
 -------------
