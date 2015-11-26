@@ -84,7 +84,7 @@ Enleve une position des position occupées de la grille
 >
  ***Précondition***
 
->         (1) marquerPosition <=> coordonneeValide
+>        (1) marquerPosition <=> coordonneeValide
          (2) marquerPosition <=> non(aUnBateau)
          (3) aUnBateau => coordonneeValide
          (4) estIntacte <=> aUnBateau
@@ -157,7 +157,8 @@ Renvoie le joueur suivant en fonction du numero du tour et du premier joueur
 - Position : Position
 - GrilleAdverse : GrilleAdverse
 - resultat : Resultat
-#### Fonctions
+
+>#### Fonctions
 - resultat   :: Resultat -> Fonctions
 <b>+</b>Gére le message de resultat de tir à afficher à l'utilisateur<br>
 - creerLoupe  :: Resultat -> String
